@@ -3,7 +3,7 @@
 ## 📚 **Programming and Algorithms 1**
 **Bachelor's Degree in Artificial Intelligence**  
 *Instructors:* Jordi Delgado & José Luis Balcázar  
-*Practice:* Teamwork Project, November 2024
+*Practice:* Teamwork Project, December 2024
 
 ---
 
@@ -81,15 +81,15 @@ Additional variants are encouraged but not required. All decisions regarding var
 ## 🚀 **Getting Started**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/three-in-a-row.git
+   git clone https://github.com/Adrifib/pa1-practice.git
    ```
 2. Run the text-based driver:
    ```bash
-   python text_driver.py
+   python3 text_driver.py
    ```
 3. Run the graphical driver (if available):
    ```bash
-   python pygame_driver.py
+   python3 pygame_driver.py
    ```
 
 ---
