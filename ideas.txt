@@ -1,0 +1,3 @@
+ - Create a frontend web to play the game. (Option in the main game, open a web in local)
+ - Add colors in order to improve the graphics.
+ - "Add the improvements you deem neccesary"
