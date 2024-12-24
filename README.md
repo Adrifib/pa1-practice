@@ -102,8 +102,8 @@ Additional variants are encouraged but not required. All decisions regarding var
 ---
 
 ## 🧑‍💻 **Authors**
-- **Team Member 1**
-- **Team Member 2**
+- **Adrián Martínez Pérez**
+- **Guillem Arnau Vallejos**
 
 ---
 
