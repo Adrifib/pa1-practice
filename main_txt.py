@@ -32,7 +32,7 @@ draw_txt(False)
 
 while not end:
     while not stone_selected:
-        i, j = input("Select stone coordinates: ").split()
+        i, j = input("Select stone coordinates: ").split() 
         stone_selected = select_st(int(i), int(j))
         draw_txt(end)
     while stone_selected and not end:

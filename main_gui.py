@@ -89,18 +89,20 @@ while not done:
     # Leave this out and we will use all CPU we can.
     clock.tick(10)
     
-    for event in pygame.event.get(): 
+    for event in pygame.event.get(): # itera cada vez que el usuario clica algo en la ventana
         "User did something"
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT: 
             "User clicked 'close window', set flag to exit loop"
             done = True
-        if event.type == pygame.MOUSEBUTTONDOWN and not end:
+        if event.type == pygame.MOUSEBUTTONDOWN and not end: 
             "game is afoot and user clicked something"
-            if stone_selected:
+            if stone_selected: # si hay una piedra seleccionada el jugador puede ponerla en un lugar libre
                 "User should click on a free destination square, otherwise ignore event"
-                stone_selected, curr_player, end = move_st(*trans_coord(*event.pos))
-                draw_board(curr_player, end)
-            else:
+                stone_selected, curr_player, end = move_st(*trans_coord(*event.pos)) 
+                # Devuelve 3 valores: un bool que indica si hay una piedra seleccionada,
+                #el jugador actual y un bool que indica el final del juego.
+                draw_board(curr_player, end) # al final de cada movimiento, se vuelve a dibujar el tablero
+            else: # si no hay piedra seleccionada, el jugador debe seleccionar una piedra
                 "User should click on a stone to select it"
                 stone_selected = select_st(*trans_coord(*event.pos))
 

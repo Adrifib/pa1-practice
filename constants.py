@@ -20,4 +20,5 @@ HEIGHT = BSIZ * SLOT + (BSIZ + 1) * SEP + ROOM # room for 3 squares with margin 
 WIDTH = HEIGHT + ROOM              # extra at both sides
 RAD = SLOT / 3                     # circle radius
 
-NO_PLAYER = -1
+NO_PLAYER = -1  #Se usa para representar una casilla vacía en el tablero.
+# Durante la inicialización, el tablero se llena con NO_PLAYER, indicando que no hay fichas colocadas.
