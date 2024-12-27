@@ -23,6 +23,10 @@ clock = pygame.time.Clock()
 # Import initialization of the separately programmed abstract board:
 from abs_board_h import set_board_up
 
+# Pantalla de ganador
+from utils import draw_winner_board
+
+
 # Prepare board:
 # this will set up all stones as unplayed, select a first stone to play,
 # and obtain functions to handle them as follows:

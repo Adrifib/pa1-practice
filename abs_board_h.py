@@ -12,6 +12,9 @@ I would prefer to do everything in terms of object-oriented programming though.
 # board dimension BSIZ
 from constants import PLAYER_COLOR, BSIZ, NO_PLAYER, GRAY, ST_PLAYER
 
+# Pantalla de ganador
+from utils import draw_winner_board
+
 # Data structure for stones
 from collections import namedtuple
 
@@ -56,15 +59,15 @@ def set_board_up(stones_per_player = ST_PLAYER):
         # Comprobar si alguien ha ganado
         for i in range(BSIZ):
             if board[i][0] != NO_PLAYER and all(board[i][j] == board[i][0] for j in range(1, BSIZ)): # Comprueba las filas
-                return True
+                return True, board[i][0]
             if board[0][i] != NO_PLAYER and all(board[j][i] == board[0][i] for j in range(1, BSIZ)): # Comprueba las columnas
-                return True
+                return True, board[0][i]
             if board[0][0] != NO_PLAYER and all(board[i][i] == board[0][0] for i in range(1, BSIZ)): # Comprueba la diagonal principal
-                return True
+                return True, board[0][0]
             if board[0][BSIZ-1] != NO_PLAYER and all(board[i][BSIZ-1-i] == board[0][BSIZ-1] for i in range(1, BSIZ)): # Comprueba la diagonal secundaria
-                return True
+                return True, board[0][BSIZ-1]
 
-        return False # Falso si nadie ha ganado
+        return False, None # Falso si nadie ha ganado
 
     def move_st(i, j):
         '''If valid square, move there selected stone and unselect it,
@@ -86,8 +89,12 @@ def set_board_up(stones_per_player = ST_PLAYER):
 
                 board[i][j] = curr_player # actualizar el tablero
 
-                if end():
-                    return True, curr_player, True # Devuelve si alguien ha ganado, el jugador que ha ganado y el fin del juego (true)
+                # Comprobar si alguien ha ganado
+                game_end, winner = end()
+
+                if game_end:
+                    draw_winner_board(winner)
+                    return True, curr_player,True # Devuelve si se ha ganado, el jugador actual y fin del juego
 
                 curr_player = 1 - curr_player # cambiar de jugador
             
