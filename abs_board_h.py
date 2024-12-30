@@ -123,9 +123,11 @@ def set_board_up(stones_per_player = ST_PLAYER):
 
     def draw_txt(end=False):
         # Dibujar el estado actual del tablero en formato texto
-        symbols = {NO_PLAYER: '.', 0: 'O', 1: 'X'}  # Símbolos para representar jugadores y casillas vacías
-        print("\n  " + " ".join(str(i) for i in range(BSIZ)))
+        symbols = {NO_PLAYER: ' ', 0: 'O', 1: 'X'}  # Símbolos para representar jugadores y casillas vacías
+        print("\n   " + "   ".join(str(i) for i in range(BSIZ)))
+        print("  +" + "---+" * BSIZ)
         for i, row in enumerate(board):
-            print(f"{i} " + " ".join(symbols[cell] for cell in row))
+            print(f"{i} | " + " | ".join(symbols[cell] for cell in row) + " |")
+            print("  +" + "---+" * BSIZ)
 
     return stones, select_st, move_st, draw_txt  # Retorna las funciones para interactuar con el tablero

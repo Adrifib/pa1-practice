@@ -9,6 +9,14 @@ Intended for Grau en Intel-ligencia Artificial, Programacio i Algorismes 1.
 # Import initialization of the separately programmed abstract board:
 from abs_board_h import set_board_up
 
+# Limpieza consola
+import os
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+clear()
+
 # Prepare board:
 # this will set up all stones as unplayed, select a first stone to play,
 # and obtain functions to handle them as follows:
@@ -33,10 +41,12 @@ draw_txt(False)
 while not end:
     while not stone_selected:
         i, j = input("Select stone coordinates: ").split() 
+        clear()
         stone_selected = select_st(int(i), int(j))
         draw_txt(end)
     while stone_selected and not end:
         i, j = input("Select destination coordinates: ").split()
+        clear()
         stone_selected, curr_player, end = move_st(int(i), int(j))
         draw_txt(end)
 
