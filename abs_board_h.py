@@ -15,6 +15,10 @@ from utils import draw_winner_board, draw_winner_txt
 from collections import namedtuple
 import sys
 
+# Colores
+from constants import COLORES
+
+
 Stone = namedtuple('Stone', ('x', 'y', 'color'))  # Definir una piedra con sus coordenadas y color
 
 def set_board_up(stones_per_player = ST_PLAYER):
@@ -123,7 +127,7 @@ def set_board_up(stones_per_player = ST_PLAYER):
 
     def draw_txt(end=False):
         # Dibujar el estado actual del tablero en formato texto
-        symbols = {NO_PLAYER: ' ', 0: 'O', 1: 'X'}  # Símbolos para representar jugadores y casillas vacías
+        symbols = {NO_PLAYER: ' ', 0: f'{COLORES["ROJO"]}O{COLORES["RESET"]}', 1: f'{COLORES["AZUL"]}X{COLORES["RESET"]}'}  # Símbolos para representar jugadores y casillas vacías con colores
         print("\n   " + "   ".join(str(i) for i in range(BSIZ)))
         print("  +" + "---+" * BSIZ)
         for i, row in enumerate(board):
