@@ -60,11 +60,19 @@ def play_again():
         if response in ['y', 'n']:
             return response == 'y'
         print(f"{COLORES['ROJO']}Please enter 'y' for yes or 'n' for no.{COLORES['RESET']}")
-  
-clear()
+
+# Animación de carga del juego
+def spinner_bar():
+    for i in range(21):
+        clear()
+        progress = f"{COLORES['AMARILLO']}▰" * i + f"{COLORES['BLANCO']}▱" * (20 - i) + f"{COLORES['AMARILLO']}"
+        print(f"{COLORES['AMARILLO']}Loading [{progress}] {i*5}%{COLORES['RESET']}")
+        time.sleep(0.1)
+    clear()
 
 # Añadido todo dentro de una función para poder reiniciar el juego las veces que sea necesario
 def play_game():
+    spinner_bar()
     # Prepare board
     stones, select_st, move_st, draw_txt = set_board_up()
 
@@ -115,6 +123,7 @@ def play_game():
 
 # Bucle principal para ejecutar el juego, si se pregunta y no se quiere volver a jugar, imprime el mensaje de despedida y sale del juego.
 while True:
+    clear()
     play_game()
     if not play_again():
         clear()
