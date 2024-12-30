@@ -66,7 +66,9 @@ def spinner_bar():
     for i in range(21):
         clear()
         progress = f"{COLORES['AMARILLO']}▰" * i + f"{COLORES['BLANCO']}▱" * (20 - i) + f"{COLORES['AMARILLO']}"
-        print(f"{COLORES['AMARILLO']}Loading [{progress}] {i*5}%{COLORES['RESET']}")
+        print("\n" * 10)  # Ajusta el número de líneas nuevas para centrar verticalmente
+        print(f"{COLORES['AMARILLO']}{' ' * 20}Cargando [{progress}] {i*5}%{COLORES['RESET']}")
+        print("\n" * 10)  # Ajusta el número de líneas nuevas para centrar verticalmente
         time.sleep(0.1)
     clear()
 
@@ -87,6 +89,7 @@ def play_game():
 
     # El try y except sirven para que no pete el juego si no se introduce el valor correcto, y devuelve un mensaje de error, permite seguir jugando
     while not end:
+        # Bucle para seleccionar la piedra
         while not stone_selected:
             print_turn_indicator(curr_player_color)
             print_input_prompt("Select stone coordinates (row col):")
@@ -99,10 +102,12 @@ def play_game():
             except ValueError:
                 clear()
                 print_header()
+                # Mensaje de error si la entrada no es válida
                 print(f"{COLORES['ROJO']}✘ Invalid input! Please enter two numbers separated by space.{COLORES['RESET']}")
                 draw_txt(end)
                 continue
 
+        # Bucle para mover la piedra seleccionada
         while stone_selected and not end:
             print_turn_indicator(curr_player_color)
             print_input_prompt("Select destination coordinates (row col):")
@@ -113,10 +118,12 @@ def play_game():
                 stone_selected, curr_player, end = move_st(int(i), int(j))
                 draw_txt(end)
                 if not stone_selected:
+                    # Cambiar el color del jugador actual
                     curr_player_color = "0" if curr_player_color == "x" else "x"
             except ValueError:
                 clear()
                 print_header()
+                # Mensaje de error si la entrada no es válida
                 print(f"{COLORES['ROJO']}✘ Invalid input! Please enter two numbers separated by space.{COLORES['RESET']}")
                 draw_txt(end)
                 continue
