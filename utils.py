@@ -47,3 +47,97 @@ def draw_winner_txt(winner):  # Función para mostrar el ganador en modo texto (
     print("\n" + "=" * 20)
     print(f"\t{winner_text}")
     print("=" * 20 + "\n")
+
+def show_menu():
+    """Muestra un menú principal atractivo y retorna el modo de juego seleccionado"""
+    if not pygame.get_init():
+        pygame.init()
+        
+    menu_screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption("Three in a Row - Menu")
+    clock = pygame.time.Clock()
+    
+    # Definir fuentes para diferentes elementos
+    title_font = pygame.font.Font(None, 74)
+    button_font = pygame.font.Font(None, 48)
+    subtitle_font = pygame.font.Font(None, 36)
+    
+    # Título del juego
+    title_text = title_font.render("Three in a Row", True, BLUISH)
+    title_rect = title_text.get_rect(center=(WIDTH/2, HEIGHT/4))
+    
+    # Subtítulo
+    subtitle_text = subtitle_font.render("Select Game Mode", True, BLACK)
+    subtitle_rect = subtitle_text.get_rect(center=(WIDTH/2, HEIGHT/4 + 50))
+    
+    # Botones
+    button_padding = 20
+    button_margin = 40
+    button_width = 200
+    button_height = 60
+    
+    # Crear rectángulos para los botones
+    normal_rect = pygame.Rect(0, 0, button_width, button_height)
+    misery_rect = pygame.Rect(0, 0, button_width, button_height)
+    
+    # Centrar los botones
+    normal_rect.center = (WIDTH/2, HEIGHT/2)
+    misery_rect.center = (WIDTH/2, HEIGHT/2 + button_height + button_margin)
+    
+    # Textos de los botones
+    normal_text = button_font.render("Normal", True, WHITE)
+    misery_text = button_font.render("Misery", True, WHITE)
+    normal_text_rect = normal_text.get_rect(center=normal_rect.center)
+    misery_text_rect = misery_text.get_rect(center=misery_rect.center)
+    
+    # Variables para efectos de hover
+    normal_hover = False
+    misery_hover = False
+    
+    while True:
+        # Manejo de eventos
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return None
+                
+            # Detectar posición del mouse para hover
+            mouse_pos = pygame.mouse.get_pos()
+            normal_hover = normal_rect.collidepoint(mouse_pos)
+            misery_hover = misery_rect.collidepoint(mouse_pos)
+            
+            # Detectar clics
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if normal_hover:
+                    return "normal"
+                if misery_hover:
+                    return "misery"
+        
+        # Dibujar fondo
+        menu_screen.fill(WHITE)
+        
+        # Dibujar título y subtítulo
+        menu_screen.blit(title_text, title_rect)
+        menu_screen.blit(subtitle_text, subtitle_rect)
+        
+        # Dibujar botones con efectos de hover
+        # Botón Normal
+        button_color = BLUISH if normal_hover else REDDISH
+        pygame.draw.rect(menu_screen, button_color, normal_rect, border_radius=10)
+        pygame.draw.rect(menu_screen, BLACK, normal_rect, 2, border_radius=10)  # Borde
+        menu_screen.blit(normal_text, normal_text_rect)
+        
+        # Botón misery
+        button_color = BLUISH if misery_hover else REDDISH
+        pygame.draw.rect(menu_screen, button_color, misery_rect, border_radius=10)
+        pygame.draw.rect(menu_screen, BLACK, misery_rect, 2, border_radius=10)  # Borde
+        menu_screen.blit(misery_text, misery_text_rect)
+        
+        # Dibujar un pequeño mensaje al pie
+        footer_text = subtitle_font.render("Press ESC to quit", True, GRAY)
+        footer_rect = footer_text.get_rect(center=(WIDTH/2, HEIGHT - 50))
+        menu_screen.blit(footer_text, footer_rect)
+        
+        # Actualizar pantalla
+        pygame.display.flip()
+        clock.tick(60)
