@@ -1,0 +1,81 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Práctica de Programación}
+\fancyhead[R]{Martínez \& Vallejos}
+\fancyfoot[C]{\thepage}
+
+\title{Informe de Práctica: Implementación del 3-en-Raya en python}
+\author{Adrián Martínez Pérez \\ Guillem Arnau Vallejos}
+\date{Enero 2025}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introducción}
+La presente práctica tiene como objetivo la implementación de un "tablero abstracto" que permita jugar al clásico juego del 3-en-raya, así como a algunas de sus variantes. El desarrollo de este proyecto busca fomentar el trabajo en equipo, la comprensión de conceptos de programación funcional y el diseño de estructuras de datos reutilizables.
+
+El informe detalla el proceso de diseño, implementación, pruebas y validación del sistema, así como las decisiones tomadas durante su desarrollo. Finalmente, se incluye una reflexión sobre las dificultades enfrentadas y los aprendizajes adquiridos.
+
+\section{Descripción del Juego}
+El 3-en-raya es un juego de estrategia en el que dos jugadores colocan sus piezas en un tablero de $3 \times 3$ casillas. El objetivo en la variante estándar es alinear tres piezas consecutivas en horizontal, vertical o diagonal.
+
+En esta práctica, se consideran las siguientes variantes del juego:
+\begin{itemize}
+    \item \textbf{Juego estándar}: El primer jugador en alinear tres piezas gana.
+    \item \textbf{Variante "misery"}: El primer jugador que alinea tres piezas pierde.
+\end{itemize}
+
+El tablero se ha diseñado para ser flexible, permitiendo ajustar su tamaño y el número de piezas por jugador.
+
+\section{Diseño e Implementación}
+El programa desarrollado consta de dos componentes principales:
+\begin{itemize}
+    \item \textbf{El tablero abstracto}: Implementado en el archivo \texttt{abs\_board.py}, contiene las estructuras de datos y funciones necesarias para gestionar el estado del juego.
+    \item \textbf{Drivers}: Programas que permiten la interacción con los jugadores. Se han utilizado tanto interfaces basadas en texto como en gráficos (usando Pygame).
+\end{itemize}
+
+El diseño del tablero abstracto se basa en principios de programación funcional, empleando clausuras y variables \texttt{nonlocal} para encapsular el estado del juego. Además, se ha asegurado que el código sea modular y fácil de extender.
+
+\section{Pruebas y Validación}
+Para garantizar el correcto funcionamiento del sistema, se realizaron las siguientes pruebas:
+\begin{itemize}
+    \item Simulaciones de partidas completas en ambas variantes del juego.
+    \item Validación cruzada con los drivers proporcionados y modificados.
+\end{itemize}
+
+Los resultados obtenidos coinciden con las expectativas y confirman que el sistema implementado cumple con los requisitos de la práctica.
+
+\section{Dificultades y Aprendizajes}
+Durante el desarrollo, enfrentamos las siguientes dificultades:
+\begin{itemize}
+    \item Comprensión y aplicación de clausuras en Python.
+    \item Diseño modular que permita cambios en las reglas del juego sin afectar el núcleo del sistema.
+\end{itemize}
+
+Como resultado, hemos adquirido habilidades avanzadas en programación funcional y diseño de software colaborativo.
+
+\section{Reparto de Responsabilidades}
+El trabajo se distribuyó de la siguiente manera:
+\begin{itemize}
+    \item Adrián Martínez Pérez: Implementación del tablero abstracto y pruebas con drivers.
+    \item Guillem Arnau Vallejos: Diseño de variantes del juego y desarrollo de interfaces gráficas.
+\end{itemize}
+
+\section{Conclusión}
+El desarrollo de esta práctica ha sido una experiencia enriquecedora que nos ha permitido consolidar conceptos clave de programación y trabajo en equipo. El sistema implementado cumple con los objetivos planteados y ofrece una base sólida para futuras mejoras.
+
+\end{document}
