@@ -2,6 +2,8 @@ import pygame
 from constants import *  # Importar constantes definidas en otro archivo
 import sys
 
+#from constants import WIDTH, HEIGHT
+
 def draw_winner_board(winner):  # Función para mostrar una pantalla que anuncia al ganador
     # Si el script se ejecuta en modo texto ('main_txt' está en el nombre del archivo)
     if 'main_txt' in sys.argv[0]:
@@ -40,6 +42,69 @@ def draw_winner_board(winner):  # Función para mostrar una pantalla que anuncia
         pygame.display.flip()  # Actualiza la pantalla para mostrar los cambios
         reloj.tick(60)  # Limita la velocidad de fotogramas a 60 FPS
 
+"""
+def draw_winner_board(winner):
+    # Colores
+    BLANCO = (255, 255, 255)
+    NEGRO = (0, 0, 0)
+    GRIS = (200, 200, 200)
+    
+    # Inicializar Pygame si aún no está inicializado
+    if not pygame.get_init():
+        pygame.init()
+    
+    # Crear la pantalla
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    
+    # Limpiar pantalla
+    screen.fill(BLANCO)
+    
+    # Preparar el texto del ganador
+    if winner == "Empate":
+        texto_ganador = "¡Es un empate!"
+    else:
+        texto_ganador = f"¡Jugador {winner} ha ganado!"
+    
+    # Crear fuente para los textos
+    fuente_grande = pygame.font.Font(None, 50)
+    fuente_pequena = pygame.font.Font(None, 36)
+    
+    # Renderizar texto del ganador
+    texto_superficie = fuente_grande.render(texto_ganador, True, NEGRO)
+    texto_rect = texto_superficie.get_rect(center=(WIDTH/2, HEIGHT/3))
+    
+    # Renderizar texto del botón
+    boton_texto = fuente_pequena.render("Volver al menú principal", True, NEGRO)
+    boton_rect = boton_texto.get_rect(center=(WIDTH/2, 2*HEIGHT/3))
+    
+    # Dibujar fondo del botón
+    pygame.draw.rect(screen, GRIS, (boton_rect.x - 10, boton_rect.y - 10,
+                                   boton_rect.width + 20, boton_rect.height + 20))
+    
+    # Dibujar textos
+    screen.blit(texto_superficie, texto_rect)
+    screen.blit(boton_texto, boton_rect)
+    
+    # Actualizar pantalla
+    pygame.display.flip()
+    
+    # Bucle de eventos para el botón
+    while True:
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                return
+                
+            if evento.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                if boton_rect.collidepoint(mouse_pos):
+                    from main_gui import show_menu
+                    show_menu()
+                    return
+
+"""
+
+
 def draw_winner_txt(winner):  # Función para mostrar el ganador en modo texto (consola)
     # Determinar el texto ganador basado en el valor de 'winner'
     winner_text = "Circles Wins!" if winner == 0 else "Crosses Wins!"
@@ -47,6 +112,7 @@ def draw_winner_txt(winner):  # Función para mostrar el ganador en modo texto (
     print("\n" + "=" * 20)
     print(f"\t{winner_text}")
     print("=" * 20 + "\n")
+
 
 def show_menu():
     """Muestra un menú principal atractivo y retorna el modo de juego seleccionado"""

@@ -91,6 +91,9 @@ def normal_mode():
     # Play until game ends
     end = False
 
+    # Título de la ventana
+    pygame.display.set_caption("Normal mode")
+
     while not done:
         
         # This limits the while loop to a max of 10 times per second.
@@ -128,6 +131,10 @@ def misery_mode():
 
     # Play until game ends
     end = False
+
+    # Título de la ventana
+    pygame.display.set_caption("Misery mode")
+    
 
     while not done:
         
