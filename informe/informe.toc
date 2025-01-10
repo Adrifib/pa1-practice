@@ -1,8 +1,2 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {section}{\numberline {1}Introducción}{2}{section.1}%
-\contentsline {section}{\numberline {2}Descripción del Juego}{2}{section.2}%
-\contentsline {section}{\numberline {3}Diseño e Implementación}{2}{section.3}%
-\contentsline {section}{\numberline {4}Pruebas y Validación}{2}{section.4}%
-\contentsline {section}{\numberline {5}Dificultades y Aprendizajes}{3}{section.5}%
-\contentsline {section}{\numberline {6}Reparto de Responsabilidades}{3}{section.6}%
-\contentsline {section}{\numberline {7}Conclusión}{3}{section.7}%
+\contentsline {section}{\'{I}ndice}{1}{section*.1}%

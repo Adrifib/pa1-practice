@@ -4,28 +4,41 @@
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{hyperref}
+\usepackage{tocbibind}
 \geometry{margin=1in}
+
+
+\begin{document}
 
 \title{Informe de Práctica: Implementación del Juego 3 en Raya}
 \author{Adrián Martínez Pérez \\ Guillem Arnau Vallejos}
 \date{Facultad de Informática de Barcelona\\Grado en Inteligencia Artificial}
 
-\begin{document}
 
 \maketitle
 
+\tableofcontents
+
 \section*{Introducción}
-El objetivo de esta práctica es implementar un tablero abstracto para el juego 3 en raya, utilizando el módulo \texttt{pygame} de \texttt{python3}. Inicialmente, en esta primera versión, hemos desarrollado el juego para ser jugado por dos personas, y no contra una máquina. El juego consta de cuatro archivos principales:
+El objetivo de esta práctica es implementar un tablero abstracto para el juego 3 en raya, utilizando el módulo
+\texttt{pygame} de \texttt{python3}. Inicialmente, en esta primera versión, hemos desarrollado el juego para ser
+ jugado por dos personas, y no contra una máquina. El juego consta de cinco archivos principales:
 
 \begin{itemize}
-    \item \textbf{\texttt{abs\_board\_h.py}}: Funciones y lógica necesarias para gestionar el estado del tablero, verificar condiciones de victoria y manejar los movimientos de los jugadores.
-    \item \textbf{\texttt{utils.py}}: Implementa las utilidades del juego: tanto las pantallas de carga en el modo texto (\texttt{txt}) como en la interfaz gráfica (\texttt{gui}), y el menú principal.
-    \item \textbf{\texttt{constants.py}}: Este archivo sirve para almacenar todas las constantes necesarias para el funcionamiento del programa.
-    \item \textbf{\texttt{main\_gui.py}}: Implementa la interfaz gráfica de usuario. Contiene la configuración inicial, creación de ventanas e integración con \texttt{abs\_board\_h.py}.
-    \item \textbf{\texttt{main\_txt.py}}: Implementa la versión para consola del juego, con colores y mejoras visuales para un mayor atractivo.
+    \item \textbf{\texttt{abs\_board\_h.py}}: Funciones y lógica necesarias para gestionar el estado del tablero,
+    verificar condiciones de victoria y manejar los movimientos de los jugadores.
+    \item \textbf{\texttt{utils.py}}: Implementa las utilidades del juego: tanto las pantallas de carga en el modo texto
+    (\texttt{txt}) como en la interfaz gráfica (\texttt{gui}), y el menú principal.
+    \item \textbf{\texttt{constants.py}}: Este archivo sirve para almacenar todas las constantes necesarias para el
+    funcionamiento del programa.
+    \item \textbf{\texttt{main\_gui.py}}: Implementa la interfaz gráfica de usuario. Contiene la configuración inicial,
+    creación de ventanas e integración con \texttt{abs\_board\_h.py}.
+    \item \textbf{\texttt{main\_txt.py}}: Implementa la versión para consola del juego, con colores y mejoras visuales
+    para un mayor atractivo.
 \end{itemize}
 
-En la carpeta de la práctica se incluye todo lo necesario para la ejecución y disfrute del juego. Solo es necesario ejecutar dos archivos para jugar al juego:
+En la carpeta de la práctica se incluye todo lo necesario para la ejecución y disfrute del juego. Solo es necesario
+ejecutar dos archivos para jugar al juego:
 
 \begin{itemize}
     \item Para jugar en modo texto, ejecutar en la consola el siguiente comando:
@@ -39,8 +52,19 @@ En la carpeta de la práctica se incluye todo lo necesario para la ejecución y 
 \end{itemize}
 
 \section*{Metodología de la Implementación}
-Para la implementación de este código hemos trabajado dos personas: Adrián Martínez Pérez y Guillem Arnau Vallejos, mediante un repositorio compartido en la plataforma \texttt{GitHub}, para poder gestionar el historial de versiones del juego en caso de que cualquier cosa falle. GitHub ha sido una excelente plataforma para la colaboración en este tipo de proyectos, y hemos disfrutado mucho aprendiendo a utilizarla.
+Para la implementación de este código hemos trabajado dos personas: Adrián Martínez Pérez y Guillem Arnau Vallejos,
+mediante un repositorio compartido en la plataforma \texttt{GitHub}, para poder gestionar el historial de versiones
+del juego en caso de que cualquier cosa falle. GitHub ha sido una excelente plataforma para la colaboración en este tipo
+de proyectos, y hemos disfrutado mucho aprendiendo a utilizarla.
 
 No hemos tenido un reparto estricto de las tareas, sino que íbamos programando y comunicándonos constantemente sobre todo lo que salía bien, mal, futuras implementaciones y posibles mejoras.
 
+Para la implementación de este código, hemos añadido un archivo que no estaba originalmente: \texttt{utils.py}, y hemos
+modificado todos los archivos con el fin de lograr una buena implementación, teniendo creatividad además de añadir nuevas
+funciones y utilidades, como una animación de carga para el modo de juego txt.
+
+\section*{Explicación del código}
+Para poder explicar todo el código sobre como funciona nuestra implementación del juego del tres en raya, debemos de explicar
+todos los archivos que hemos modificado \texttt{abs\_board\_h.py, constants.py, main\_gui.py y main\_txt.py}, además del archivo 
+de nueva creación que hemos incluido nosotros: \texttt{utils.py}.
 \end{document}
