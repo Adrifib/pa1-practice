@@ -115,13 +115,48 @@ def normal_mode():
                     stone_selected = select_st(*trans_coord(*event.pos))
     pass
 
+def misery_mode():
+    # set_board_up() already selects a first stone; set curr_player to zero.
+    stone_selected = True
+    curr_player = 0
 
+    # Show grid and stones:
+    draw_board()
+
+    # Loop until the user clicks the close button.
+    done = False
+
+    # Play until game ends
+    end = False
+
+    while not done:
+        
+        # This limits the while loop to a max of 10 times per second.
+        clock.tick(10)
+        
+        for event in pygame.event.get(): # itera cada vez que el usuario clica algo en la ventana
+            "User did something"
+            if event.type == pygame.QUIT: 
+                print("User clicked 'close window', set flag to exit loop")
+                done = True
+            if event.type == pygame.MOUSEBUTTONDOWN and not end: 
+                print("game is afoot and user clicked something")
+                if stone_selected: # si hay una piedra seleccionada el jugador puede ponerla en un lugar libre
+                    print("User should click on a free destination square, otherwise ignore event")
+                    stone_selected, curr_player, end = move_st(*trans_coord(*event.pos), misery_mode=True) 
+                    # Devuelve 3 valores: un bool que indica si hay una piedra seleccionada,
+                    #el jugador actual y un bool que indica el final del juego.
+                    draw_board(curr_player, end) # al final de cada movimiento, se vuelve a dibujar el tablero
+                else: # si no hay piedra seleccionada, el jugador debe seleccionar una piedra
+                    print("User should click on a stone to select it")
+                    stone_selected = select_st(*trans_coord(*event.pos))
+    pass
 
 if selected_mode == "normal":
     normal_mode()
 
 elif selected_mode == "misery":
-    pass
+    misery_mode()
 
 # Friendly finish-up:
 pygame.quit()

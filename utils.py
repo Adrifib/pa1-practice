@@ -134,7 +134,7 @@ def show_menu():
         menu_screen.blit(misery_text, misery_text_rect)
         
         # Dibujar un pequeño mensaje al pie
-        footer_text = subtitle_font.render("Press ESC to quit", True, GRAY)
+        footer_text = subtitle_font.render("By Adrián and Guillem", True, GRAY)
         footer_rect = footer_text.get_rect(center=(WIDTH/2, HEIGHT - 50))
         menu_screen.blit(footer_text, footer_rect)
         

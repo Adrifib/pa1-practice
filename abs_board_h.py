@@ -61,9 +61,11 @@ def set_board_up(stones_per_player = ST_PLAYER):
         print("Invalid selection. Please select a valid stone.")  # Mensaje de error
         return False  # Indicar que no se seleccionó ninguna piedra
 
-    def end():
+    def end(misery_mode=False):
         # Comprobar condiciones de victoria (líneas, columnas o diagonales completas)
         def show_winner(winner):
+            if misery_mode:
+                winner = 1 - winner
             if 'main_txt' in sys.modules:
                 draw_winner_txt(winner)  # Mostrar el ganador en formato texto si está disponible
             else:
@@ -88,7 +90,7 @@ def set_board_up(stones_per_player = ST_PLAYER):
             return True, board[0][BSIZ-1]
         return False, None  # Si no hay ganador, continuar el juego
 
-    def move_st(i, j):
+    def move_st(i, j, misery_mode=False):
         nonlocal curr_player, selected_stone
         if selected_stone:
             # Mover una piedra seleccionada a una nueva posición si es válida
@@ -98,7 +100,7 @@ def set_board_up(stones_per_player = ST_PLAYER):
                 played.append(selected_stone)  # Añadir la piedra de nuevo al tablero
                 board[i][j] = curr_player  # Marcar la casilla con el jugador actual
                 selected_stone = None  # Limpiar la selección
-                game_end, winner = end()  # Comprobar si el juego termina
+                game_end, winner = end(misery_mode)  # Comprobar si el juego termina
                 if game_end:
                     return False, curr_player, True  # El juego terminó con un ganador
                 curr_player = 1 - curr_player  # Cambiar al siguiente jugador
@@ -115,7 +117,7 @@ def set_board_up(stones_per_player = ST_PLAYER):
                     stone = stone._replace(x=i, y=j)  # Asignar las coordenadas
                     played.append(stone)  # Añadirla al tablero
                     board[i][j] = curr_player  # Marcar la casilla
-                    game_end, winner = end()  # Comprobar si el juego termina
+                    game_end, winner = end(misery_mode)  # Comprobar si el juego termina
                     if game_end:
                         return True, curr_player, True
                     curr_player = 1 - curr_player  # Cambiar de jugador
