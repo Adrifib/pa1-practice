@@ -104,14 +104,13 @@ def draw_winner_board(winner):
 
 """
 
-
 def draw_winner_txt(winner):  # Función para mostrar el ganador en modo texto (consola)
     # Determinar el texto ganador basado en el valor de 'winner'
-    winner_text = "Circles Wins!" if winner == 0 else "Crosses Wins!"
-    # Imprimir el resultado formateado en la consola
-    print("\n" + "=" * 20)
-    print(f"\t{winner_text}")
-    print("=" * 20 + "\n")
+    winner_text = f"{COLORES['ROJO']}Circles Wins!{COLORES['RESET']}" if winner == 0 else f"{COLORES['AZUL']}Crosses Wins!{COLORES['RESET']}"
+    # Imprimir el resultado formateado en la consola con colores y negrita
+    print(f"\n{COLORES['NEGRITA']}{COLORES['AMARILLO']}" + "=" * 20 + f"{COLORES['RESET']}")
+    print(f"{COLORES['NEGRITA']}{winner_text}{COLORES['RESET']}")
+    print(f"{COLORES['NEGRITA']}{COLORES['AMARILLO']}" + "=" * 20 + f"{COLORES['RESET']}\n")
 
 
 def show_menu():
