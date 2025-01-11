@@ -88,6 +88,13 @@ Para la implementación de este código, hemos añadido un archivo que no estaba
 modificado todos los archivos con el fin de lograr una buena implementación, teniendo creatividad además de añadir nuevas
 funciones y utilidades, como una animación de carga para el modo de juego txt.
 
+\section{Modos de juego}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+
 \section{Explicación del Código}
 Para poder explicar todo el código sobre como funciona nuestra implementación del juego del tres en raya, debemos de explicar
 todos los archivos que hemos modificado \texttt{abs\_board\_h.py, constants.py, main\_gui.py y main\_txt.py}, además del archivo 
@@ -124,7 +131,7 @@ A continuación, se explican cada una de ellas:
 Dentro de este archivo se definen todas las constantes del juego, haciéndolo así más modificable. Incluye el tamaño del tablero, las piedras por jugador,
 los colores del juego para el modo gui, además del tamaño de la ventana, celdas vacías, tamaño de las piedras\ldots
 Además, nos sentimos libres de añadir un nuevo diccionario llamado \texttt{COLORES}, dentro del cual se definen nuevos colores como el amarillo, violeta,
-magenta o cyan. Todo esto con el fin de modificar los colores en el modo txt, que se impriman las fichas con diferentes colores, o incluso la animación de carga.
+magenta o cyan. Todo esto con el fin de modificar los colores en el modo txt, que se impriman las piedras con diferentes colores, o incluso la animación de carga.
 Gracias a este diccionario, se pueden modificar los colores fácilmente, y son accesibles para todos los archivos python, e incluso podríamos añadir colores
 a los logs de cada archivo para detectar posibles fallos más fácilmente.
 
@@ -152,15 +159,60 @@ el ganador del juego, y se imprime el texto en consola en diferentes colores uti
 \vspace{\baselineskip}
 La última función en este archivo es \texttt{show\_menu}, la cual fue todo un reto de programación. Esta función implementa el menú
 principal del juego, y por ello es una de las más importantes.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.5]{./imagenes/menu_inicio.png}
+    \caption{Menú principal del juego en el modo gui (Graphical User Interface).}\label{fig:men_princ1}
+\end{figure}
 
 \vspace{\baselineskip}
 Dibuja una ventana con el título del juego, y con la posibilidad de seleccionar el modo de juego 'Normal' o 'Misery', con dos atractivos 
-botones rojos y con un hover azul, el cual se muestra al pasar el ratón por encima. Debajo se muestran los autores del juego.
+botones rojos y con un hover azul, el cual se muestra al pasar el ratón por encima, y ayuda a diferenciar el modo de juego que se va a seleccionar, además de aportar un toque
+dinámico al menú. Debajo se muestran los autores del juego.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{./imagenes/menu_inicio.png}
-    \caption{Menú principal del juego en el modo gui.}
-    \label{fig:etiqueta}
+    \includegraphics[scale=0.5]{./imagenes/menu_inicio2.png}
+    \caption{Hover azul en el menú principal del juego.}\label{fig:men_princ2}
 \end{figure}
 
+\subsection{main\_gui.py}
+Este archivo de Python es el más importante para implementar el menú del juego en modo GUI (Graphical User Interface), y el cual ofrece una interfaz de juego más amigable 
+que la tradicional consola. Es sencilla de utilizar, se puede jugar con simples clicks y se visualizan correctamente todas las piedras, aunque la funcionalidad sigue siendo 
+la misma que en consola. Está implementado de forma que se muestra una ventana de tamaño variable en función del tamaño del tablero, y en su fase inicial, muestra casillas 
+en blanco indicando donde puede ser una piedra colocada, y un rectángulo el cual indica el color del jugador al que le toca colocar una piedra.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{./imagenes/tablero4x4.png}
+    \caption{Ejemplo de tablero $4 \times 4$.}\label{fig:tablero4x4}
+\end{figure}
+Como podemos observar en la figura~\ref{fig:tablero4x4}, podemos modificar el tablero a nuestro gusto, así como las piedras de las que dispone cada jugador (para un tablero
+$N \times N$, cada jugador tendrá $\frac{N^2 - 1}{2}$ piedras (siempre que $N^2 -1$ sea par)), y hacer el juego aún más interesante.
+
+\vspace{\baselineskip}
+Dentro de este archivo hemos definido varias funciones vitales para su correcto funcionamiento:
+\begin{itemize}
+    \item \texttt{trans\_cord}: Traduce las coordenadas de los píxeles de la ventana pygame en coordenadas del tablero.
+    \item \texttt{draw\_square}: Dibuja un cuadrado en la pantalla en las coordenadas específicas del tablero, sirve para mostrar los cuadrados (tanto vacíos
+    como con piedra). Se le introduce como valor el tamaño de la pantalla, y las coordenadas, y utiliza la función \texttt{pygame.draw.polygon} para conseguir esto.
+    \item \texttt{draw\_stone}: Sirve para dibujar la piedra en la pantalla en las coordenadas especificadas que se le introducen a la función, así como el color en 
+    función del jugador al que le toque el turno. Utiliza la misma función antes mencionada pero con un círculo (\texttt{pygame.draw.circle}).
+    \item \texttt{draw\_board}: Es la función principal, y se encarg de dibujar el tablero completo, utilizando las funciones anteriormente mencionadas. Dibuja las casillas
+    en horizontal y vertical, y todas las piedras que sean necesarias. Acepta el parámetro \texttt{curr\_player}, para saber cual es el jugador actual y dibujar un rectángulo 
+    del color de dicho jugador, y end, para saber si debe de seguir dibujando tablero o el juego ya ha acabado.
+\end{itemize}
+
+\vspace{\baselineskip}
+Para seleccionar el modo de juego, dentro de este mismo archivo, y antes de ejecutar las funciones que se encargan de ejecutar el juego propiamente dicho en el modo seleccionado,
+hemos agregado una variable llamada \texttt{selected\_mode}, la cual llama a la función \texttt{show\_menu}, que invoca el menú principal del juego, y mediante los botones que se 
+han mostrado anteriormente en el menú principal retorna \texttt{'normal'} si se ha seleccionado el modo normal o \texttt{'misery'}, si se ha seleccionado el modo misery.
+
+\vspace{\baselineskip}
+Posteriormente se han definido las funciones \texttt{normal\_mode} y \texttt{misery\_mode}. Hemos optado por definir dos funciones diferentes para cada modo de juego para poder 
+modificar el comportamiento de cada modo de juego si fuese necesario sin que este afecte al otro, además facilitar la legibilidad del código.
+
+Si se ha seleccionado el modo normal, se ejecuta el juego en modo normal, y en caso contrario se ejecuta el juego en modo misery.
+
+
 \end{document}
+
