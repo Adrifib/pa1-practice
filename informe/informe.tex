@@ -4,6 +4,7 @@
 \usepackage{hyperref}
 \usepackage{geometry}
 \usepackage{graphicx}
+
 % Configuración de márgenes
 \geometry{left=2.5cm,right=2.5cm,top=3cm,bottom=3cm}
 
@@ -89,11 +90,58 @@ modificado todos los archivos con el fin de lograr una buena implementación, te
 funciones y utilidades, como una animación de carga para el modo de juego txt.
 
 \section{Modos de juego}
-\vspace{\baselineskip}
-\vspace{\baselineskip}
-\vspace{\baselineskip}
-\vspace{\baselineskip}
+El 3 en raya moderno ganó popularidad en Europa tras la Edad Media, todo debido a su simplicidad, y además, se podía jugar facilmente
+con materiales rudimentarios, como piedras (de ahí viene el nombre original de las fichas), y un tablero dibujado en la tierra. Este juego 
+ha sido incluso utilizado para enseñar a los niños conceptos básicos de estrategia, lógica y capacidades predictivas.
+En esta práctica, por el momento, han sido implementados dos modos de juego, cada uno con sus reglas, las cuales alteran la dinámica 
+del juego y ofrecen una experiencia variada: el modo \textit{normal} y el modo \textit{misery}.
 
+\vspace{\baselineskip}
+\subsection{Modo normal}
+Este modo sigue las reglas clásicas del 3 en raya, conocido por la mayoría de la población y jugado en todo el mundo, sin importar 
+país, costumbres o culturas. En este modo premia la estrategia de anticipación a los movimientos del oponente, y tratar de bloquear
+que este mismo haga un 3 en raya y conseguirlo nosotros. Este tipo de juegos se remonta a la época del Imperio Romano, en el cual se 
+conoce que se jugaba una versión primitiva de este juego conocida como \textit{Terni Lapilli}, y se jugaba con tableros grabados en piedra,
+de los cuales se han encontrado bastantes en ruinas arqueológicas romanas.
+
+\vspace{\baselineskip}
+Las reglas son las siguientes:
+\begin{itemize}
+    \item El tablero es una cuadrícula de $3 \times 3$ casillas.
+    \item Cada jugador tiene un conjunto de piedras identificables (círculos y cruces en el modo gui, y X y O para el modo txt), 
+    típicamente 4 por jugador.
+    \item Los jugadores se alternan turnos colocando una ficha en una casilla vacía del tablero, en el caso de que no se hayan colocado
+    todas las fichas disponibles por jugador, y moviendo fichas en el caso contrario.
+    \item El objetivo del juego es ser el primer jugador en conseguir alinear 3 de tus fichas consecutivamente en línea recta, en vertical
+    o incluso en diagonal.
+\end{itemize}
+
+\subsection{Modo misery}
+Este modo de juego representa una variación menos conocida, pero incluso más entretenida que el original 3 en raya. El concepto de invertir
+los objetivos de los juegos tradicionales se lleva haciendo durante siglos en muchas culturas, con el fin de aumentar el desafío intelectual del juego.
+La idea de este modo de juego implica que ganar significa perder, es decir, ahora el objetivo es hacer que tu rival haga 3 en raya para poder ganar, lo cual
+implica un mayor desafío que el tradicional 3 en raya, ya que obligas a cada jugador a colocar sus piedras de un modo que sea más dificil hacer el 3 en raya 
+para obligar al otro a hacerlo.
+
+\vspace{\baselineskip}
+Las reglas son iguales que el anterior modo de juego, pero con el objetivo invertido, es decir, evitar ser ell primer jugador en alinear 3 fichas consecutivas.
+
+\subsection{Variantes del 3 en raya}
+Este juego ha sido diseñado para añadir la posibilidad de modificar el tamaño del tablero, lo cual añade una capa de personalización enriquecedora para la experiencia
+del juego, posibilitando que las partidas sean más largas, se deba de pensar más en una nueva estrategia, y enfrentar un nuevo desafío intelectual.
+\vspace{\baselineskip}
+Además, con la posibilidad de ampliar el tablero a un $4 \times 4$ (cambiando también el número de fichas por jugador), se expande el juego para poder albergar también 
+el clásico \textit{Connect Four}, e incluso mayores tableros como un $5 \times 5$ o un $6 \times 6$, aunque supondrían un mayor reto.
+
+\subsubsection{Modo con poderes}
+Además, cabría la posibilidad de añadir un nuevo modo de juego (que no ha sido implementado en nuestro código), el cual consista en combinar la tradicional estrategia
+del 3 en raya con elementos sorpresa dentro del tablero. Jugando a este modo se incluiría una o más casillas del tablero, seleccionadas al azar e invisibles para los jugadores,
+que serían casillas especiales, dentro de las cuales cuando un jugador pone una ficha se le avisaría de que le ha sido activado un poder especial, el cual puede alterar
+el curso del juego. 
+
+\vspace{\baselineskip}
+Estas casillas podrían añadir la posibilidad de eliminar fichas del oponente, mover fichas propias a otra ubicación, bloquear casillas o incluso un turno extra (lo cual tendría 
+sentido para tableros más grandes que el tradicional).
 
 \section{Explicación del Código}
 Para poder explicar todo el código sobre como funciona nuestra implementación del juego del tres en raya, debemos de explicar
@@ -181,11 +229,21 @@ que la tradicional consola. Es sencilla de utilizar, se puede jugar con simples 
 la misma que en consola. Está implementado de forma que se muestra una ventana de tamaño variable en función del tamaño del tablero, y en su fase inicial, muestra casillas 
 en blanco indicando donde puede ser una piedra colocada, y un rectángulo el cual indica el color del jugador al que le toca colocar una piedra.
 
-\begin{figure}[h]
+\vspace{\baselineskip}
+\begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.2]{./imagenes/tablero4x4.png}
+    \includegraphics[scale=0.3]{./imagenes/tablero4x4.png}
     \caption{Ejemplo de tablero $4 \times 4$.}\label{fig:tablero4x4}
 \end{figure}
+
+\vspace{\baselineskip}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.3]{./imagenes/partida4x4.png}
+    \caption{Ejemplo de partida en el tablero $4 \times 4$}\label{fig:partida4x4}
+\end{figure}
+
+\vspace{\baselineskip}
 Como podemos observar en la figura~\ref{fig:tablero4x4}, podemos modificar el tablero a nuestro gusto, así como las piedras de las que dispone cada jugador (para un tablero
 $N \times N$, cada jugador tendrá $\frac{N^2 - 1}{2}$ piedras (siempre que $N^2 -1$ sea par)), y hacer el juego aún más interesante.
 
@@ -206,12 +264,97 @@ Dentro de este archivo hemos definido varias funciones vitales para su correcto 
 Para seleccionar el modo de juego, dentro de este mismo archivo, y antes de ejecutar las funciones que se encargan de ejecutar el juego propiamente dicho en el modo seleccionado,
 hemos agregado una variable llamada \texttt{selected\_mode}, la cual llama a la función \texttt{show\_menu}, que invoca el menú principal del juego, y mediante los botones que se 
 han mostrado anteriormente en el menú principal retorna \texttt{'normal'} si se ha seleccionado el modo normal o \texttt{'misery'}, si se ha seleccionado el modo misery.
+Dependiendo del modo de juego seleccionado, se ejecuta la función correspondiente. Esto se logra mediante una estructura condicional \texttt{if} en Python.
+
 
 \vspace{\baselineskip}
 Posteriormente se han definido las funciones \texttt{normal\_mode} y \texttt{misery\_mode}. Hemos optado por definir dos funciones diferentes para cada modo de juego para poder 
-modificar el comportamiento de cada modo de juego si fuese necesario sin que este afecte al otro, además facilitar la legibilidad del código.
+modificar el comportamiento de cada modo de juego si fuese necesario sin que este afecte al otro, además facilitar la legibilidad del código y tener la opción de añadir nuevos 
+modos de juego mucho más fácilmente.
 
-Si se ha seleccionado el modo normal, se ejecuta el juego en modo normal, y en caso contrario se ejecuta el juego en modo misery.
+\subsection{main\_txt.py}
+El archivo \texttt{main\_txt.py} es el encargado de ejecutar el modo texto del juego 3 en raya en la consola. Este archivo contiene todas las funciones y la lógica necesarias para 
+permitir a los jugadores interactuar con el juego a través de la línea de comandos. Este archivo está diseñado para ser fácil de entender y modificar sin demasiada dificultad, además
+de requerir muchos menos recursos que la versión en gui.
+
+\vspace{\baselineskip}
+Se utilizan librerías como os (para ejecutar comandos de consola: limpiarla en windows y linux), y time, para añadir pausas y hacer el juego más digerible visualmente.
+A continuación se explican las funciones una a una:
+
+\begin{itemize}
+    \item \texttt{clear}: Se encarga de limiar la consola en windows y linux, cambiando de comando para cada sistema operativo.
+    \item \texttt{print\_header}: Imprime la cabecera del juego.
+    \item \texttt{print\_turn\_indicator}: Imprime el indicador del turno del jugador.
+    \item \texttt{print\_input\_prompt}: Imprime la línea donde se escribirán las coordenadas en las que el jugador quiere que se coloque cada ficha.
+    \item \texttt{play\_again}: Pregunta al usuario si quiere jugar de nuevo y retorna la respuesta (True o False), la cual será utilizada posteriormente. 
+    \item \texttt{spinner\_bar}: Se encarga de realizar la animación que aparece al principio del inicio del juego, no tiene ninguna funcionalidad aparte de la estética.
+    \item \texttt{play\_game}: Esta función sirve para que pueda ser llamada siempre que se reinicie el juego. Dentro de ella se establecen todos los parámetros necesarios 
+    para iniciar el juego, y se llama a la función \texttt{set\_board\_up} para inicializar el tablero. Dentro de esta función hay dos bucles principales:
+    \begin{enumerate}
+        \item Bucle para seleccionar la piedra, que utiliza \texttt{try} y \texttt{except} para capturar errores y que el juego no termine si se selecciona unas coordenadas 
+        no válidas.
+        \item Bucle para mover la piedra seleccionada, y al igual que antes tiene capacidad para gestionar errores eficientemente
+    \end{enumerate}
+\end{itemize}
+
+\vspace{\baselineskip}
+Además de todo lo anteriormente mencionado, se ejecuta un bucle principal, el cual ejecuta la función \texttt{play\_game}, y sigue ejecutándose hasta que el jugador responde que no 
+desea jugar más.
+
+\vspace{\baselineskip}
+A continuación se incluyen algunas fotos del funcionamiento del juego en modo txt:
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.45]{./imagenes/animacion.png}
+    \caption{Animación de carga.}\label{fig:animacion}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.45]{./imagenes/principal_txt.png}
+    \caption{Pantalla principal del juego, tablero vacío.}\label{fig:principal_txt}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.45]{./imagenes/partida.png}
+    \caption{Partida a mitad de juego.}\label{fig:partida}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.45]{./imagenes/final_partida.png}
+    \caption{Final de partida, ganan las cruces (X).}\label{fig:final_partida}
+\end{figure}
+\newpage
+
+\section{Bibliografía}
+\begin{enumerate}
+    \item \textbf{Documentación oficial de Pygame} \\
+    \url{https://www.pygame.org/docs/}
+
+    \item \textbf{Python.org} \\
+    \url{https://docs.python.org/3/}
+
+    \item \textbf{Github} \\
+    \url{https://docs.github.com/es/repositories}
+
+    \item \textbf{ASCII Art Archive} \\
+    \url{https://www.asciiart.eu/}
+
+    \item \textbf{GameDev.net} \\
+    \url{https://www.gamedev.net/}
+
+    \item \textbf{Wikipedia} \\
+    \url{https://es.wikipedia.org/wiki/Tres_en_raya}
+
+    \item \textbf{Real Python} \\
+    \url{https://realpython.com/python-exceptions/}
+
+    \item \textbf{ANSI Escape Codes} \\
+    \url{https://en.wikipedia.org/wiki/ANSI_escape_code}
+
+    \item \textbf{Python Patterns} \\
+    \url{https://python-patterns.guide/}
+\end{enumerate}
 
 
 \end{document}

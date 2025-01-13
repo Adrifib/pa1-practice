@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1736610580.25924 "/home/adri/0programacion/pa1/pa1-practice/informe/informe.tex" "informe.pdf" "informe" 1736610580.76462 0
+["pdflatex"] 1736776579.99219 "/home/adri/0programacion/pa1/pa1-practice/informe/informe.tex" "informe.pdf" "informe" 1736776580.63976 0
   "/etc/texmf/web2c/texmf.cnf" 1736255422.00406 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/adri/0programacion/pa1/pa1-practice/informe/informe.tex" 1736610580.07597 14541 7ad6e8d5070dfc6eb2c8688df6d9283e ""
+  "/home/adri/0programacion/pa1/pa1-practice/informe/informe.tex" 1736776579.81548 23263 4dc7d97307b299a49d375570fe59a684 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -82,13 +82,18 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1736255435.65598 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1736255458 8213505 731632a981fe7f0e55b7a8a888637720 ""
+  "imagenes/animacion.png" 1736774574.64513 24687 ec4f2b25a32025b21cba42366d22bb96 ""
+  "imagenes/final_partida.png" 1736775537.50224 37709 333b6b495201b04e77e9aa6fff4b55fc ""
   "imagenes/menu_inicio.png" 1736595243.22971 23278 e03e7bc42db70992330b8f834d82edde ""
   "imagenes/menu_inicio2.png" 1736606359.1256 22140 46bdcea51e1cb0dddb072c840171c8f3 ""
+  "imagenes/partida.png" 1736775497.83 35624 24c84661de6d72eac22a29a2454b86dd ""
+  "imagenes/partida4x4.png" 1736775022.86403 9621 4532e6bc01531efbfbcd69742593e95d ""
+  "imagenes/principal_txt.png" 1736775436.10088 33483 1ca95a5a1fc052579230a3a8765d72dd ""
   "imagenes/tablero4x4.png" 1736607331.37135 6498 03671b5b58fd193db40c3e274db19917 ""
-  "informe.aux" 1736610580.70398 2033 bb336e67b1c454879ccc8dfe5eb56028 "pdflatex"
-  "informe.out" 1736610580.70598 1070 eef5bd4598a08a10b78630971168c166 "pdflatex"
-  "informe.tex" 1736610580.07597 14541 7ad6e8d5070dfc6eb2c8688df6d9283e ""
-  "informe.toc" 1736610580.70598 651 e7e9a7dd39d7ddbbebcf8531662b2305 "pdflatex"
+  "informe.aux" 1736776580.59548 3912 55128bfdad815722645f41fad37337b0 "pdflatex"
+  "informe.out" 1736776580.59649 1863 8a12c7e092d25b104c54235fdfa831e5 "pdflatex"
+  "informe.tex" 1736776579.81548 23263 4dc7d97307b299a49d375570fe59a684 ""
+  "informe.toc" 1736776580.59649 1134 afcac580381822c7b6ee5cf55b1ced44 "pdflatex"
   (generated)
   "informe.aux"
   "informe.log"
